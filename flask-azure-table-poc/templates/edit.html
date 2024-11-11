@@ -1,0 +1,17 @@
+<!-- templates/edit.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit Entity</h1>
+<form method="post">
+    <label for="partition_key">Partition Key:</label><br>
+    <input type="text" id="partition_key" name="partition_key" value="{{ entity['PartitionKey'] }}" readonly><br><br>
+    <label for="row_key">Row Key:</label><br>
+    <input type="text" id="row_key" name="row_key" value="{{ entity['RowKey'] }}" readonly><br><br>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="{{ entity.get('Name', '') }}"><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" value="{{ entity.get('Email', '') }}"><br><br>
+    <input type="submit" value="Update Entity">
+</form>
+{% endblock %}

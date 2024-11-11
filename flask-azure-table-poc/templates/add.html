@@ -1,0 +1,17 @@
+<!-- templates/add.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add New Entity</h1>
+<form method="post">
+    <label for="partition_key">Partition Key:</label><br>
+    <input type="text" id="partition_key" name="partition_key" required><br><br>
+    <label for="row_key">Row Key:</label><br>
+    <input type="text" id="row_key" name="row_key" required><br><br>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+    <input type="submit" value="Add Entity">
+</form>
+{% endblock %}

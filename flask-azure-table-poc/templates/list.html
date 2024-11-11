@@ -1,0 +1,30 @@
+<!-- templates/list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Entities in Azure Table</h1>
+<a href="{{ url_for('add_entity') }}">Add New Entity</a>
+<table>
+    <tr>
+        <th>PartitionKey</th>
+        <th>RowKey</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    {% for entity in entities %}
+    <tr>
+        <td>{{ entity['PartitionKey'] }}</td>
+        <td>{{ entity['RowKey'] }}</td>
+        <td>{{ entity.get('Name', '') }}</td>
+        <td>{{ entity.get('Email', '') }}</td>
+        <td>
+            <a href="{{ url_for('edit_entity', partition_key=entity['PartitionKey'], row_key=entity['RowKey']) }}">Edit</a> |
+            <form action="{{ url_for('delete_entity', partition_key=entity['PartitionKey'], row_key=entity['RowKey']) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this entity?');">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
